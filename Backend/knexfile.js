@@ -3,10 +3,14 @@
 module.exports = {
 
   development: {
-    client: 'mysql2',
-    connection: {
-      filename: './src/database/db.mysql'
-    },
+    
+      client: 'mysql2',
+      connection: {
+        host : 'localhost',
+        user : 'root',
+        password : 'eduardo123',
+        database : 'interact'
+      },
     migrations:{
       directory: './src/database/migrations'
     },

@@ -8,9 +8,17 @@ const OrderController = require("./controllers/OrderController");
 const ProductController = require("./controllers/ProductController");
 const ProjectController = require("./controllers/ProjectController");
 const SaleController = require("./controllers/SaleController");
+const SessionController = require("./controllers/SessionController");
 
-routes.get('/', (req, res) => {
-    res.send('hello world!');
-});
+
+// ROTA interactians
+
+routes.post('/interactians', InteractianController.create);
+routes.get('/interactians', InteractianController.index);
+routes.get('/interactians/:id', InteractianController.getInteractian);
+
+
+routes.post('/session', SessionController.login);
+
 
 module.exports = routes;
