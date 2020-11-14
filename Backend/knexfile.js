@@ -5,7 +5,10 @@ module.exports = {
   development: {
     client: 'mysql2',
     connection: {
-      filename: './src/database/db.sqlite'
+      filename: './src/database/db.mysql'
+    },
+    migrations:{
+      directory: './src/database/migrations'
     },
   },
 
