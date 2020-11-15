@@ -1,5 +1,8 @@
 const connection = require('../database/connection');
-const routes = require('../routes');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+
 
 module.exports = {
     async login(req, res) {
@@ -8,20 +11,36 @@ module.exports = {
         const [verificação] = await connection('interactians').where('email', '=', email).select(['password', 'email']);
 
         if(!verificação){
-            res.json("Email não encontrado!");
+            return res.status(401).json({error: "Usuário ou senha incorretos!"});
         }else{
 
-            if(email !== verificação.email){
-                res.json("Error : email not found!");
-            } 
+            bcrypt.compare(password, verificação.password, (err, success) => {
+                if(err){
+                    return res.status(500).json({error: "Erro inesperado, tente novamente!"});
+                }
+                
+                if(success){
 
-            if(password !== verificação.password){
-                res.json("Error : senha incorreta!");
-            }
+                    const token = jwt.sign(
+                        {
+                            email: email,
+                        },
 
-            res.json(verificação);
+                        process.env.JWT_TOKEN, 
+
+                        {
+                            expiresIn: "1h"
+                        }, 
+                        );
+                    
+                    res.header({Authorization: token});  
+                    return  res.status(200).json({success: "Autenticado com sucesso!"});
+                }else{
+                    return res.status(401).json({error: "Usuário ou senha incorretos!"});
+                }
+            })
+
         }
-
 
         
     }
