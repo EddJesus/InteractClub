@@ -52,7 +52,23 @@ module.exports = {
     
     
     async delete(req, res){
+        const {id} = req.params;
 
+        try {
+            
+            const response = await connection('projects').delete('*').where('id_project', '=', id);
+
+            if(response){
+                return res.status(200).json({message: "Deletado com sucesso!" + response});
+            }else{
+                return res.status(404).json({error: "Projeto não encontrado!"});
+            }
+
+            
+        } catch (error) {
+
+            return res.status(500).json({error: "Erro ao deletar projeto!"});
+        }
     } 
 
 
