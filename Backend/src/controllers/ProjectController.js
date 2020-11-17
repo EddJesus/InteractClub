@@ -1,5 +1,4 @@
 const connection = require('../database/connection');
-const bcrypt = require('bcrypt');
 
 module.exports = {
 
@@ -22,7 +21,7 @@ module.exports = {
 
             return res.status(201).json({message: "Projeto cadastrado com sucesso!"});
         } catch (error) {
-            return res.status(500).json({error: "Erro ao cadastrar novo projeto! (ERRO: " + error + ")"});
+            return res.status(500).json({error: "Erro ao cadastrar novo projeto!"});
         }
 
     },
@@ -36,18 +35,44 @@ module.exports = {
             return res.status(200).json(data);
         } catch (error) {
 
-            return res.status(500).json({error: "Erro ao listar casos! (ERRO : " + error + ")"});
+            return res.status(500).json({error: "Erro ao listar casos!"});
 
         }
     },
 
     async getProject(req, res){
+        const {id} = req.params;
 
+        try {
+            const data = await connection('projects').select('*').where('id_project', '=', id);
+
+            return res.status(200).json(data);
+        } catch (error) {
+
+            return res.status(500).json({error: "Erro ao listar casos!"});
+
+        }
     },
 
     
-    async update(req, res){
-        
+    async update(req, res){ //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! coisa pra resolver
+        const {id} = req.params;
+        const data = req.body;
+
+        try {
+            const data = await connection('projects').update({
+                title: data.title,
+                body: data.body,
+                img: data.img,
+                id_interactian: data.id_interactian,
+            }).where('id_project', '=', id);
+
+            return res.status(200).json(data);
+        } catch (error) {
+
+            return res.status(500).json({error: "Erro ao listar casos!"});
+
+        }
     },
     
     
