@@ -17,8 +17,13 @@ routes.post('/interactians', InteractianController.create);
 routes.get('/interactians', InteractianController.index);
 routes.get('/interactians/:id', InteractianController.getInteractian);
 
-
+// ROTA sessions
 routes.post('/session', SessionController.login);
+
+// ROTA projects
+routes.post('/projects', ProjectController.create);
+routes.get('/projects', ProjectController.index);
+routes.delete('/projects/:id', ProjectController.delete);
 
 
 module.exports = routes;
