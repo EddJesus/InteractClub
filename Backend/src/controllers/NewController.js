@@ -46,6 +46,10 @@ module.exports = {
         try {
             const data = await connection('news').select('*').where('id_new', '=', id);
 
+            if(data == 0){
+                return res.status(401).json({error: "Produto não encontrado!"});
+            }
+            
             return res.status(200).json(data);
         } catch (error) {
 

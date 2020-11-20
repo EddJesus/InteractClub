@@ -35,7 +35,7 @@ module.exports = {
             return res.status(200).json(data);
         } catch (error) {
 
-            return res.status(500).json({error: "Erro ao listar casos!"});
+            return res.status(500).json({error: "Erro ao listar projetos!"});
 
         }
     },
@@ -46,10 +46,14 @@ module.exports = {
         try {
             const data = await connection('projects').select('*').where('id_project', '=', id);
 
+            if(data == 0){
+                return res.status(401).json({error: "Projeto não encontrado!"});
+            }
+
             return res.status(200).json(data);
         } catch (error) {
 
-            return res.status(500).json({error: "Erro ao listar casos!"});
+            return res.status(500).json({error: "Erro ao listar projetos!"});
 
         }
     },
@@ -70,7 +74,7 @@ module.exports = {
             return res.status(200).json(data);
         } catch (error) {
 
-            return res.status(500).json({error: "Erro ao listar casos!"});
+            return res.status(500).json({error: "Erro ao listar projetos!"});
 
         }
     },

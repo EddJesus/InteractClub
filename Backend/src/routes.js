@@ -1,6 +1,8 @@
 const express = require('express');
 const routes = express.Router();
 
+const upload = require("./controllers/MulterController");
+
 const ClientController = require("./controllers/ClientController");
 const InteractianController = require("./controllers/InteractianController");
 const NewController = require("./controllers/NewController");
@@ -28,12 +30,19 @@ routes.get('/projects/:id', ProjectController.getProject);
 routes.delete('/projects/:id', ProjectController.delete);
 routes.post('/projects/:id', ProjectController.update);
 
-// ROTA Products
+// ROTA News
 routes.post('/news', NewController.create);
 routes.get('/news', NewController.index);
 routes.get('/news/:id', NewController.getNew);
 routes.delete('/news/:id', NewController.delete);
 routes.post('/news/:id', NewController.update);
+
+// ROTA products
+routes.post('/products', upload.single('img'), ProductController.create);
+routes.get('/products', ProductController.index);
+routes.get('/products/:id', ProductController.getProduct);
+routes.delete('/products/:id', ProductController.delete);
+routes.post('/products/:id', ProductController.update);
 
 // ROTA client
 
