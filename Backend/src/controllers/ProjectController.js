@@ -7,6 +7,8 @@ module.exports = {
 
         const imgs = req.files;
 
+        console.log(process.env.DB_NAME);
+
         var pathimgs = '';
 
         imgs.forEach((img)=>{

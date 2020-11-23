@@ -4,12 +4,12 @@ module.exports = {
 
   development: {
     
-      client: 'mysql2',
+      client: process.env.DB_CLIENT,
       connection: {
-        host : 'localhost',
-        user : 'root',
-        password : 'eduardo123',
-        database : 'interact'
+        host : process.env.DB_HOST,
+        user : process.env.DB_USER,
+        password : process.env.DB_PASSWORD,
+        database : process.env.DB_NAME
       },
     migrations:{
       directory: './src/database/migrations'

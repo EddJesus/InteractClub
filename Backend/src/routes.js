@@ -46,6 +46,10 @@ routes.post('/products/:id', ProductController.update);
 
 // ROTA client
 
+// ROTA sale
+
+// ROTA order
+
 
 // ROTA teste
 routes.get('/teste', MercadoPagoAPI.test);
