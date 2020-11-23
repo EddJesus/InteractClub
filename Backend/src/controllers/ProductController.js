@@ -6,8 +6,13 @@ module.exports = {
 
         const data = req.body;
         
-        const img = req.file;
-    
+        const imgs = req.files;
+
+        var pathimgs = '';
+
+        imgs.forEach((img)=>{
+            pathimgs += img.path+'+';
+        })
 
         const validation = await connection('interactians').select('permission').where('id_interactians', '=', data.id_interactian);
 
@@ -19,7 +24,7 @@ module.exports = {
             await connection('products').insert({
                 title: data.title,
                 description: data.description,
-                img: img.destination+img.filename,
+                img: pathimgs,
                 price: data.price,
                 id_interactian: data.id_interactian,
             })
@@ -28,7 +33,7 @@ module.exports = {
         } catch (error) {
             return res.status(500).json({error: "Erro ao cadastrar novo produto!"+error});
         }
- 
+  
     },
 
     async index(req, res){ 

@@ -5,6 +5,14 @@ module.exports = {
     async create(req, res) {
         const data = req.body;
 
+        const imgs = req.files;
+
+        var pathimgs = '';
+
+        imgs.forEach((img)=>{
+            pathimgs += img.path+'+';
+        })
+
         const validation = await connection('interactians').select('permission').where('id_interactians', '=', data.id_interactian);
 
         if(validation[0].permission === 0){
@@ -15,7 +23,7 @@ module.exports = {
             await connection('projects').insert({
                 title: data.title,
                 body: data.body,
-                img: data.img,
+                img: pathimgs,
                 id_interactian: data.id_interactian,
             })
 
@@ -66,7 +74,7 @@ module.exports = {
         try {
             const data = await connection('projects').update({
                 title: data.title,
-                body: data.body,
+                description: data.body,
                 img: data.img,
                 id_interactian: data.id_interactian,
             }).where('id_project', '=', id);

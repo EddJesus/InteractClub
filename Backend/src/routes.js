@@ -24,21 +24,21 @@ routes.get('/interactians/:id', InteractianController.getInteractian);
 routes.post('/session', SessionController.login);
 
 // ROTA projects
-routes.post('/projects', ProjectController.create);
+routes.post('/projects', upload.array('img'), ProjectController.create);
 routes.get('/projects', ProjectController.index);
 routes.get('/projects/:id', ProjectController.getProject);
 routes.delete('/projects/:id', ProjectController.delete);
 routes.post('/projects/:id', ProjectController.update);
 
 // ROTA News
-routes.post('/news', NewController.create);
+routes.post('/news', upload.array('img'), NewController.create);
 routes.get('/news', NewController.index);
 routes.get('/news/:id', NewController.getNew);
 routes.delete('/news/:id', NewController.delete);
 routes.post('/news/:id', NewController.update);
 
 // ROTA products
-routes.post('/products', upload.single('img'), ProductController.create);
+routes.post('/products', upload.array('img'), ProductController.create);
 routes.get('/products', ProductController.index);
 routes.get('/products/:id', ProductController.getProduct);
 routes.delete('/products/:id', ProductController.delete);

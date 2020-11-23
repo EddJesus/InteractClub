@@ -7,6 +7,14 @@ module.exports = {
 
         const validation = await connection('interactians').select('permission').where('id_interactians', '=', data.id_interactian);
 
+        const imgs = req.files;
+
+        var pathimgs = '';
+
+        imgs.forEach((img)=>{
+            pathimgs += img.path+'+';
+        })
+
         if(validation[0].permission === 0){
             return res.status(401).json({error: "Usuário não autorizado!"});
         }
@@ -15,7 +23,7 @@ module.exports = {
             await connection('news').insert({
                 title: data.title,
                 body: data.body,
-                img: data.img,
+                img: pathimgs,
                 id_interactian: data.id_interactian,
             })
 
