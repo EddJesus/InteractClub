@@ -7,8 +7,6 @@ module.exports = {
 
         const imgs = req.files;
 
-        console.log(process.env.DB_NAME);
-
         var pathimgs = '';
 
         imgs.forEach((img)=>{
@@ -21,7 +19,7 @@ module.exports = {
             return res.status(401).json({error: "Usuário não autorizado!"});
         }
 
-        try {
+        try { 
             await connection('projects').insert({
                 title: data.title,
                 body: data.body,

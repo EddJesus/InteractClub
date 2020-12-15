@@ -1,4 +1,8 @@
 const app = require('./app');
+const env = require('./config/env');
 
-app.listen(3333);
-console.log("Server rodando na porta 3333!");
+const PORT = env.port
+const HOST = env.host
+
+app.listen(PORT, HOST);
+console.log("Server rodando em " + HOST + ":" + PORT);

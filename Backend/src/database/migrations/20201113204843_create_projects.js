@@ -5,7 +5,7 @@ exports.up = function(knex) {
         table.text('body').notNullable();
         table.string('img', 255).notNullable();
 
-        table.string('id_interactian').notNullable();
+        table.integer('id_interactian').unsigned().notNullable();
 
         table.foreign('id_interactian', 'id_interactian_project').references('id_interactians').inTable('interactians');
     })

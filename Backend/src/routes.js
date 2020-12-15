@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 
-const upload = require("./controllers/MulterController");
+const upload = require("./config/multer");
 
 const ClientController = require("./controllers/ClientController");
 const InteractianController = require("./controllers/InteractianController");
@@ -13,6 +13,11 @@ const SaleController = require("./controllers/SaleController");
 const SessionController = require("./controllers/SessionController");
 
 const MercadoPagoAPI = require("./APIs/MercadoPago/MercadoPagoAPI");
+
+
+routes.get('/', (req, res) =>{
+    res.json("HELLO TESTE!");
+})
 
 
 // ROTA interactians
