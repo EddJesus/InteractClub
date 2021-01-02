@@ -1,0 +1,130 @@
+.container-navbar{
+    background-color: #2580eb;
+
+    display: flex;
+
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 150px;
+    width: 100%;
+    
+    margin-right: 20px;
+    
+}
+
+.container-navbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container-navbar li{
+    position: relative;
+    float: left;
+    padding: 15px;
+    list-style: none;
+    color: #ffff;
+    font-size: 150%;
+}
+
+.container-navbar a{
+    display: block;
+    color: #ffff;
+    text-decoration: none;
+}
+
+.img{
+    width: 25%;
+    max-width: 500px;
+    margin-left: 20px;
+}
+
+.links-navbar{
+    width: 40%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.links-navbar a:hover{
+    font-weight: bold;
+    transition-delay: 10ms;
+}
+
+
+.access-navbar{
+    width: 30%;
+    max-width: 400px;
+    font-size: 15px;
+    margin-right: 20px;
+
+    color: #ffff;
+}
+
+.access-navbar p{
+    display: flex;
+    margin-left: 10px;
+}
+
+.access-navbar a{
+    color: rgb(207, 204, 204);
+    margin-left: 10px;
+}
+
+.access-navbar a:hover{
+    color: rgb(192, 187, 187);
+    margin-left: 10px;
+}
+
+.inputs-navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs-navbar input{
+    border-style: none;
+    padding: 5px;
+    margin: 4px;
+    height: 10%;
+    max-height: 30px;
+    border-radius: 10px;
+    width: 60%;
+}
+
+.inputs-navbar input:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.inputs-navbar button{
+    box-shadow: none;
+    border-radius: 10px;
+    border-style: none;
+    color: #ffff;
+    background: #4c9af3;
+    height: 30px;
+    width: 20%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.inputs-navbar button:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    background-color: #6eabf0;
+}
+
+.inputs-navbar button:hover{
+    height: 32px;
+    width: 22%;
+    transition: 0.2ms;
+    background-color: #6eabf0;
+}
+
+
+

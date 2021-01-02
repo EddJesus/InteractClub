@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
+import Routes from "./routes";
+
 import './App.css';
 
 function App() {
   return (
     <Fragment>
-      <h1>Interact</h1>
+      <Routes/>
     </Fragment>
   );
 }
