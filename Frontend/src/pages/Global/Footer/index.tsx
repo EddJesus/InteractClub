@@ -6,7 +6,7 @@ const Footer:React.FC = () => {
     return(
             <div className="container-footer">
                 
-                <footer>Eduardo de jesus. Todos os direitos reservados.</footer>
+                <footer>Eduardo de Jesus Santos. Todos os direitos reservados.</footer>
 
             </div>
 
