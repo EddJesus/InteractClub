@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 //Global components
-import NavBar from "./pages/Global/NavBar";
-import Footer from "./pages/Global/Footer";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 //Pages
 import Home from "./pages/Home/index";

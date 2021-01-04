@@ -1,6 +1,6 @@
 export function select(){
     return {
         type: "home",
-        payload: false
+        payload: 1
     }
 }

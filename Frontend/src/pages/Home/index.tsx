@@ -1,9 +1,11 @@
 import React from "react";
 
+import { Teste } from "./styled"
+
 
 const Home:React.FC = () => {
     return(
-        <h1>Home!</h1>
+        <Teste>Home!</Teste>
     );
 }
 

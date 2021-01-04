@@ -47,11 +47,12 @@
 .links-navbar{
     width: 40%;
     max-width: 600px;
-    padding: 20px;
+    -webkit-background-composite: border;
 }
 
 .links-navbar a:hover{
-    font-weight: bold;
+    border-radius: 10px;
+    background: #6eabf0;
     transition-delay: 10ms;
 }
 
