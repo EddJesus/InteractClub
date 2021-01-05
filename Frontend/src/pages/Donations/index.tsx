@@ -4,7 +4,7 @@ import Navbar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 
 
-const Market:React.FC = () => {
+const Donations:React.FC = () => {
     return(
         <>
             <Navbar/>
@@ -14,4 +14,4 @@ const Market:React.FC = () => {
     );
 }
 
-export default Market;
+export default Donations;

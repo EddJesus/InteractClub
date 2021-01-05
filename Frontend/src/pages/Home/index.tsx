@@ -1,11 +1,20 @@
 import React from "react";
 
-import { Teste } from "./styled"
+import { Teste } from "./styled";
+
+import "./styles.css";
+
+import Navbar from "../../components/NavBar";
+import Footer from "../../components/Footer";
 
 
 const Home:React.FC = () => {
     return(
-        <Teste>Home!</Teste>
+        <>
+            <Navbar/>
+
+            <Footer/>
+        </>
     );
 }
 
