@@ -11,7 +11,7 @@ services:
     networks: 
       - "interact"
     volumes:
-      - ./Backend/:/usr/app
+      - ./Backend/:/usr/app/
     depends_on: 
       - mysql
     environment: 
@@ -30,11 +30,12 @@ services:
     networks: 
       - "interact"
     volumes:
-      - ./Frontend/:/usr/app
+      - ./Frontend/:/usr/app/
+      - '/usr/app/node_modules'
     depends_on: 
       - backend
     environment: 
-      - MYSQL_HOST=backend_interact
+      - MYSQL_HOST=frontend_interact
       - MYSQL_USER=edu
       - MYSQL_PASS=eduardo123
       - MYSQL_DB=interactclub
