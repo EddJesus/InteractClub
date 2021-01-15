@@ -14,7 +14,7 @@ const SessionController = require("./controllers/SessionController");
 
 const MercadoPagoAPI = require("./APIs/MercadoPago/MercadoPagoAPI");
 
-
+ 
 routes.get('/', (req, res) =>{
     res.json("HELLO TESTE!");
 })
