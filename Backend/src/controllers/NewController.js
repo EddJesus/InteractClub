@@ -10,7 +10,7 @@ module.exports = {
         const imgs = req.files;
 
         var pathimgs = '';
-
+ 
         imgs.forEach((img)=>{
             pathimgs += img.path+'+';
         })

@@ -26,7 +26,7 @@
 .container-navbar li{
     position: relative;
     float: left;
-    padding: 15px;
+
     list-style: none;
     color: #ffff;
     font-size: 150%;
@@ -34,6 +34,7 @@
 
 .container-navbar a{
     display: block;
+    padding: 10px;
     color: #ffff;
     text-decoration: none;
 }
@@ -74,6 +75,7 @@
 .access-navbar a{
     color: rgb(207, 204, 204);
     margin-left: 10px;
+    padding: 0px;
 }
 
 .access-navbar a:hover{
