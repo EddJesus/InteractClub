@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 import logo  from "../../assets/logo.png";
 
 import "./styles.css";
-
-import { activatedPage } from "../../util/ActivatedPage";
 
 const Navbar:React.FC = (props) => {
 
