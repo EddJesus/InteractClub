@@ -1,0 +1,60 @@
+.flex-box1 {
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+.container-box1 {
+	padding: 50px;
+	height: 100%;
+}
+
+.content-box1 {
+	padding-top: 1px;
+	border-radius: 5px;
+	background-color: rgb(241, 241, 241);
+	text-align: center;
+	width: 400px;
+}
+.logue-fc {
+	background-color: #0d3b70;
+	color: white;
+	border-radius: 100px;
+	width: 200px;
+	height: 35px;
+}
+.logue-gg {
+	margin-top: 10px;
+	background-color: #3d86da;
+	color: white;
+	border-radius: 100px;
+	width: 200px;
+	height: 35px;
+}
+.color {
+	color: #2580eb;
+}
+.ou {
+	color: #2580eb;
+	font-size: x-large;
+}
+.caixas {
+	text-align: center;
+	margin-bottom: 10px;
+	border-radius: 100px;
+	width: 300px;
+	height: 35px;
+}
+.btnesse {
+	background-color: #2580eb;
+	color: white;
+	border-radius: 100px;
+	width: 200px;
+	height: 35px;
+}
+.content3 {
+	padding-top: 40px;
+
+	text-align: center;
+}

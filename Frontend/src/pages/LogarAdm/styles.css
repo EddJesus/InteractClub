@@ -1,0 +1,100 @@
+.flex-box {
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+.container-box {
+	padding: 50px;
+	height: 100%;
+}
+
+.content-box {
+	padding-top: 1px;
+	border-radius: 5px;
+	background-color: rgb(241, 241, 241);
+	text-align: center;
+	width: 900px;
+	height: 300px;
+}
+.titulo {
+	margin-top: 20px;
+	width: 800px;
+	height: 35px;
+	border-radius: 100px;
+	padding-left: 15px;
+}
+.titulo2 {
+	color: #999;
+	width: 818px;
+}
+.a2 {
+	color: black;
+}
+input {
+	margin: 0;
+	padding: 5;
+
+	font-size: 100%;
+	font: inherit;
+}
+select {
+	margin: 0;
+	padding: 10;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+
+button {
+	margin: 0;
+	padding: 5px;
+
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+
+h2 {
+	text-align: left;
+	padding-left: 30px;
+}
+
+.content {
+	padding-top: 15px;
+	border-radius: 5px;
+
+	text-align: center;
+	width: 900px;
+	height: 200px;
+}
+.btnEnviar {
+	background-color: #2580eb;
+	color: white;
+	border-radius: 100px;
+	width: 200px;
+	height: 35px;
+}
+.content2 {
+	padding-top: 10px;
+
+	text-align: center;
+}
+.btnEdit {
+	margin-right: 50px;
+	background-color: #2580eb;
+	color: white;
+	border-radius: 100px;
+
+	width: 200px;
+	height: 35px;
+}
+.btnEdit2 {
+	background-color: #2580eb;
+	color: white;
+	border-radius: 100px;
+
+	width: 200px;
+	height: 35px;
+}
