@@ -83,7 +83,7 @@ const Navbar:React.FC = (props) => {
                         <input type="password" placeholder="Senha"/>
                         <button>OK</button>
                     </div>
-                    <p className="text-dont">Não possui cadastro?<a href="">Registre-se aqui</a></p>
+                    <p className="text-dont">Não possui cadastro?<a href="/register">Registre-se aqui</a></p>
                 </div>
 
 

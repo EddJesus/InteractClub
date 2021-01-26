@@ -4,7 +4,7 @@ import Navbar from '../../components/NavBar'
 import Footer from '../../components/Footer'
 import './styles2.css'
 
-const Cadastro: React.FC = () => {
+const Register: React.FC = () => {
 	return (
 		<>
 			<Navbar />
@@ -38,7 +38,7 @@ const Cadastro: React.FC = () => {
 							placeholder="Digite a senha"
 						></input>
 						<input
-							className="caixas"
+							className="caixas-repeat-password"
 							type="password"
 							placeholder="Repita a senha"
 						></input>
@@ -56,4 +56,4 @@ const Cadastro: React.FC = () => {
 	)
 }
 
-export default Cadastro
+export default Register

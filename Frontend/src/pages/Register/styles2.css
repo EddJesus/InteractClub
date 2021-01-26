@@ -3,6 +3,7 @@
 	align-items: center;
 	justify-content: center;
 	display: flex;
+	height: 80%!important;
 }
 
 .container-box1 {
@@ -46,6 +47,13 @@
 	width: 300px;
 	height: 35px;
 }
+
+.caixas{
+	box-shadow: 0 0 0 0;
+	border: 0 none;
+	outline: 0;
+}
+
 .btnesse {
 	background-color: #2580eb;
 	color: white;
@@ -53,8 +61,30 @@
 	width: 200px;
 	height: 35px;
 }
+
+.btnesse:hover{
+	height: 40px;
+    width: 220px;
+    transition: 0.2ms;
+    background-color: #6eabf0;
+}
+
 .content3 {
 	padding-top: 40px;
 
 	text-align: center;
+}
+
+.caixas-repeat-password{
+	text-align: center;
+	margin-bottom: 30px;
+	border-radius: 100px;
+	width: 300px;
+	height: 35px;
+}
+
+.caixas-repeat-password{
+	box-shadow: 0 0 0 0;
+	border: 0 none;
+	outline: 0;
 }

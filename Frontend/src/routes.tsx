@@ -9,7 +9,7 @@ import Donations from './pages/Donations/index'
 import AboutUs from './pages/AboutUs/index'
 import AddNews from './pages/AddNews/index'
 import LogarAdm from './pages/LogarAdm/index'
-import Cadastro from './pages/Cadastro/index'
+import Register from './pages/Register/index'
 
 const Routes: React.FC = () => {
 	return (
@@ -21,7 +21,7 @@ const Routes: React.FC = () => {
 			<Route component={AboutUs} path="/about-us" exact />
 			<Route component={AddNews} path="/addnews" exact />
 			<Route component={LogarAdm} path="/logaradm" exact />
-			<Route component={Cadastro} path="/cadastro" exact />
+			<Route component={Register} path="/register" exact />
 		</BrowserRouter>
 	)
 }

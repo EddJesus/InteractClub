@@ -8,7 +8,7 @@ const AboutUs:React.FC = () => {
     return(
         <>
             <Navbar/>
-
+                <div></div>
             <Footer/>
         </>
     );
