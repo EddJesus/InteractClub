@@ -25,16 +25,19 @@ const LogarAdm: React.FC = () => {
 								Selecione seu Cargo
 							</option>
 							<option value="" className="a2">
-								Edmar é o chefe
+								Presidente
 							</option>
 							<option value="" className="a2">
-								Edmar é o chefe
+								Diretor de serviços internos
 							</option>
 							<option value="" className="a2">
-								Edmar é o chefe
+								Diretor de projetos
 							</option>
 							<option value="" className="a2">
-								Edmar é o chefe
+								Diretor de imagem publica
+							</option>
+							<option value="" className="a2">
+								Administrador do site
 							</option>
 						</select>
 					</div>
