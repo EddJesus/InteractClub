@@ -1,35 +1,43 @@
 const connection = require('../database/connection');
+const aws = require("aws-sdk");
+const s3 = new aws.S3();
 
 module.exports = {
 
     async create(req, res) {
         const data = req.body;
 
-        const validation = await connection('interactians').select('permission').where('id_interactians', '=', data.id_interactian);
-
         const imgs = req.files;
 
         var pathimgs = '';
- 
-        imgs.forEach((img)=>{
-            pathimgs += img.path+'+';
+        var url = '';
+        var key = '';
+
+        imgs.forEach(img =>{
+            pathimgs += img.path;
+            url += img.location
+            key += img.key
         })
+
+        const validation = await connection('interactians').select('permission').where('id_interactians', '=', data.id_interactian);
 
         if(validation[0].permission === 0){
             return res.status(401).json({error: "Usuário não autorizado!"});
         }
 
-        try {
+
+        try { 
             await connection('news').insert({
                 title: data.title,
                 body: data.body,
-                img: pathimgs,
+                img: key,
+                url: url,
                 id_interactian: data.id_interactian,
             })
 
-            return res.status(201).json({message: "Notícia cadastrada com sucesso!"});
+            return res.status(201).json({message: "Notícia cadastrado com sucesso!"});
         } catch (error) {
-            return res.status(500).json({error: "Erro ao cadastrar nova Notícia"});
+            return res.status(500).json({error: "Erro ao cadastrar nova noticia!" + error});
         }
 
     },
@@ -91,23 +99,39 @@ module.exports = {
     async delete(req, res){
         const {id} = req.params;
 
+
+        const getKey = await connection('news').where('id_new', '=', id).pluck('img');
+
+
         try {
+
+            var key = ''
+
+            getKey.map(k => {key = k})
+
+            if(key.length > 0){
+
+                s3.deleteObject({
+                    Bucket: process.env.S3_BUCKET_NAME,
+                    Key: key
+                }).promise();
+        
+            }
             
             const response = await connection('news').delete('*').where('id_new', '=', id);
 
             if(response){
-                return res.status(200).json({message: "Deletado com sucesso!" + response});
+                return res.status(200).json({message: "Deletado com sucesso!"});
             }else{
-                return res.status(404).json({error: "Nóticia não encontrado!"});
+                return res.status(404).json({error: "Notícia não encontrado!"});
             }
 
             
         } catch (error) {
 
-            return res.status(500).json({error: "Erro ao deletar notícia!"});
+            return res.status(500).json({error: "Erro ao deletar noticia!"});
         }
+        
     } 
-
-
 
 }
