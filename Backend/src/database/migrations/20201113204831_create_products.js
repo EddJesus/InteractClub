@@ -5,6 +5,7 @@ exports.up = function(knex) {
         table.text('description').notNullable();
         table.string('img', 255).notNullable();
         table.decimal('price', 65,0).notNullable();
+        table.string('url', 255).notNullable().defaultTo('');
         
         table.integer('id_interactian').unsigned().notNullable();
 

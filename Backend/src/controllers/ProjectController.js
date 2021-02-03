@@ -1,4 +1,6 @@
 const connection = require('../database/connection');
+const aws = require("aws-sdk");
+const s3 = new aws.S3();
 
 module.exports = {
 
@@ -8,9 +10,13 @@ module.exports = {
         const imgs = req.files;
 
         var pathimgs = '';
+        var url = '';
+        var key = '';
 
-        imgs.forEach((img)=>{
-            pathimgs += img.path+'+';
+        imgs.forEach(img =>{
+            pathimgs += img.path;
+            url += img.location
+            key += img.key
         })
 
         const validation = await connection('interactians').select('permission').where('id_interactians', '=', data.id_interactian);
@@ -19,17 +25,19 @@ module.exports = {
             return res.status(401).json({error: "Usuário não autorizado!"});
         }
 
+
         try { 
             await connection('projects').insert({
                 title: data.title,
                 body: data.body,
-                img: pathimgs,
+                img: key,
+                url: url,
                 id_interactian: data.id_interactian,
             })
 
             return res.status(201).json({message: "Projeto cadastrado com sucesso!"});
         } catch (error) {
-            return res.status(500).json({error: "Erro ao cadastrar novo projeto!"});
+            return res.status(500).json({error: "Erro ao cadastrar novo projeto!" + error});
         }
 
     },
@@ -91,12 +99,29 @@ module.exports = {
     async delete(req, res){
         const {id} = req.params;
 
+
+        const getKey = await connection('projects').where('id_project', '=', id).pluck('img');
+
+
         try {
+
+            var key = ''
+
+            getKey.map(k => {key = k})
+
+            if(key.length > 0){
+
+                s3.deleteObject({
+                    Bucket: process.env.S3_BUCKET_NAME,
+                    Key: key
+                }).promise();
+        
+            }
             
             const response = await connection('projects').delete('*').where('id_project', '=', id);
 
             if(response){
-                return res.status(200).json({message: "Deletado com sucesso!" + response});
+                return res.status(200).json({message: "Deletado com sucesso!"});
             }else{
                 return res.status(404).json({error: "Projeto não encontrado!"});
             }
@@ -106,6 +131,7 @@ module.exports = {
 
             return res.status(500).json({error: "Erro ao deletar projeto!"});
         }
+        
     } 
 
 

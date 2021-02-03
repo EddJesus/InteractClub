@@ -1,5 +1,5 @@
 // Update with your config settings.
-const env = require('./src/config/env');
+const env = require("./src/config/env");
 
 module.exports = {
 

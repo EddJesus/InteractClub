@@ -1,4 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
+import api from "../../services/Api";
+import ProjectInterface from "../../interfaces/projectsInterface";
+
+import {Link} from "react-router-dom";
+
 
 import Navbar from '../../components/NavBar'
 import Footer from '../../components/Footer'
@@ -6,13 +12,25 @@ import QRCode from 'qrcode.react'
 
 import img from '../../assets/nature.jpg'
 import whatsapp from '../../assets/whatsapp.png'
-import onk from '../../assets/arvoredenatalEDITADA.png'
-import agasalho from '../../assets/agasalhoEDITADA.png'
-import imigrantes from '../../assets/imigrantesEDITADA.png'
 
 import './styles.css'
 
 const Home: React.FC = () => {
+
+	const [projects, setProjects] = useState<ProjectInterface[]>([]);
+
+	useEffect(()=>{
+		api.get("/projects")
+		.then(res => {
+			setProjects(res.data);
+		})
+	}, []);
+
+	projects.map(project => {
+		project.img.replace(/".jpeg+"/, "");
+	})
+	
+
 	return (
 		<>
 			<Navbar />
@@ -26,7 +44,9 @@ const Home: React.FC = () => {
 						<form className="form-became-interactian" action="">
 							<input type="text" placeholder="Nome" />
 							<input type="tel" placeholder="Whatsapp" />
+							<button type="submit">Enviar</button>
 						</form>
+
 					</div>
 
 					<div className="QRCode">
@@ -48,15 +68,14 @@ const Home: React.FC = () => {
 					</div>
 
 					<div className="grid-projects">
-						<div>
-							<img src={onk} alt="" />
-						</div>
-						<div>
-							<img src={agasalho} alt="" />
-						</div>
-						<div>
-							<img src={imigrantes} alt="" />
-						</div>
+						{projects.map(project => (
+								<div>
+									<p>{project?.title}</p>
+									<img src={project?.img} alt="" />
+									<p>{project?.img}</p>
+								</div>
+							))
+						}
 					</div>
 				</div>
 			</div>

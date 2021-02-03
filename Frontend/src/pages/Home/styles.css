@@ -111,6 +111,29 @@ body{
     
 }
 
+.form-became-interactian button{
+    margin-top: 30px;
+
+    padding: 3%;
+
+    border-radius: 10px;
+
+    box-shadow: none;
+    border-radius: 10px;
+    border-style: none;
+    color: #ffff;
+
+    color: white;
+    background-color: #2481e9;
+
+    margin-bottom: 0px;
+
+}
+
+.form-became-interactian button:hover{
+    background: #6eabf0;
+    transition-delay: 10ms;
+}
 
 
 .form-became-interactian input{
@@ -229,6 +252,7 @@ body{
     background-color: gray;
     height: 200px;
     width: 100%;
+    margin-top: 20px;
 }
 
 .grid-projects img{

@@ -4,6 +4,7 @@ exports.up = function(knex) {
         table.string('title', 50).notNullable();
         table.text('body').notNullable();
         table.string('img', 255).notNullable();
+        table.string('url', 255).notNullable().defaultTo('');
 
         table.integer('id_interactian').unsigned().notNullable();
 
