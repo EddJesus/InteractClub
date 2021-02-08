@@ -80,8 +80,7 @@ span{
 }
 
 .btnesse:hover{
-	height: 40px;
-    width: 220px;
+	cursor: pointer;
     transition: 0.2ms;
     background-color: #6eabf0;
 }

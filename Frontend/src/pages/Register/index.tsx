@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from 'react'
+import React, { useState }  from 'react'
 
 import Navbar from '../../components/NavBar'
 import FormRegister from '../../components/FormRegister/FormRegister';
@@ -6,8 +6,7 @@ import Footer from '../../components/Footer'
 import './styles2.css' 
 import * as yup from 'yup'
 import api from '../../services/Api';
-import { Redirect } from 'react-router-dom';
-import { render } from 'react-dom';
+
 
 const Register: React.FC = () => {
 
@@ -15,17 +14,6 @@ const Register: React.FC = () => {
     const [notCreated, setNotCreated] = useState("");
 	const [errorEmail, setErroremail] = useState("");
 	const [redirect, setRedirect] = useState(0);
-
-
-
-    useEffect(() => {
-
-    },[created])
-
-    useEffect(() => {
-
-    },[errorEmail]);
-
 
 
 	return (

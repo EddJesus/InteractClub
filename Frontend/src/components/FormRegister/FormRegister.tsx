@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { ErrorMessage, Formik, Form, Field } from 'formik';
 import { Redirect } from 'react-router-dom';
