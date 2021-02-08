@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import api from "../../services/Api";
 import ProjectInterface from "../../interfaces/projectsInterface";
 
-import {Link} from "react-router-dom";
 
 
 import Navbar from '../../components/NavBar'

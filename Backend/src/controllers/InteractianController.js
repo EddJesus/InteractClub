@@ -5,38 +5,78 @@ module.exports = {
 
     async create(req, res) {
         const data = req.body;
+        console.log(data);
 
-        bcrypt.hash(data.password, 10, async (errBcrypt, hash) => {
+        if(req.body.interactian_code != "eduardo"){
 
-            if(errBcrypt){
-                res.status(500).json({
-                    error: errBcrypt + ", Tente novamente!",
-                })
+            res.status(401).json({message: "Código inválido"});
+
+        }else{
+
+            let permission = 0;
+
+            switch(req.body.role){
+                case "presidente":
+                    permission = 3
+                        break;
+                case "diretor_de_projetos":
+                    permission = 3
+                        break;
+                case "diretor_de_serviços_internos":
+                    permission = 3
+                        break;
+                case "diretor_de_imagem_pública":
+                    permission = 3
+                        break;
+                case "administrador_do_site":
+                    permission = 3
+                        break;
+                case "rotariano_patrocinador":
+                    permission = 1
+                        break;
+                case "associado":
+                    permission = 1
+                        break;
             }
 
-            try {
-                const validation = await connection('interactians').select('email').where('email', '=', data.email);
-                
-                if(validation.length > 0){
-                    return res.status(406).json({error: "Email already exists!"});
+            bcrypt.hash(data.password, 10, async (errBcrypt, hash) => {
+
+                if(errBcrypt){
+                    res.status(500).json({
+                        error: errBcrypt + ", Tente novamente!",
+                    })
                 }
-    
-                await connection('interactians').insert({
-                name: data.name,
-                email : data.email,
-                tel : data.tel,
-                role : data.role,
-                password: hash,
-                permission: data.permission
+
+
+
+                try {
+                    const validation = await connection('interactians').select('email').where('email', '=', data.email);
+                    
+                    if(validation.length > 0){
+                        res.status(406).json({error: "Email already exists!"});
+                        return false;
+                    }
+
+        
+                    await connection('interactians').insert({
+                    name: data.name,
+                    email : data.email,
+                    tel : data.tel,
+                    role : data.role,
+                    password: hash,
+                    permission: permission
+                    
+                });
+                } catch (error) {
+                    console.log("caiu aqui")
+                    res.status(500).json({error: error + ", Tente novamente!"});
+                }
+
+                return res.status(201).json({Confirmação : `Usuário ${data.name} criado com sucesso! `});
                 
             });
-            } catch (error) {
-                res.status(500).json({error: error + ", Tente novamente!"});
-            }
 
-            return res.status(201).json({Confirmação : `Usuário ${data.name} criado com sucesso! `});
-            
-        });
+        }
 
 
     },
@@ -92,12 +132,21 @@ module.exports = {
     }
     
     */
-
-    /*  Não implementarei ainda   
+   /*
     
     async delete(req, res){
-        await connection('interactians').delete('')
-    } */
+        console.log("vsf")
+        const {id} = req.params;
+
+        try{
+            await connection('interactians').delete('*').where('id_interactians', '=', id);
+            res.status(200).json({sucesso: "usuário deletado com sucesso"})
+        
+        }catch(error){
+            res.status(500).send("error:" + error);
+        }
+    }
+    */
 
 
 

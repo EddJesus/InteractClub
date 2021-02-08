@@ -1,54 +1,110 @@
-import React from 'react'
+import React, { useEffect, useState }  from 'react'
 
 import Navbar from '../../components/NavBar'
+import FormRegister from '../../components/FormRegister/FormRegister';
 import Footer from '../../components/Footer'
-import './styles2.css'
+import './styles2.css' 
+import * as yup from 'yup'
+import api from '../../services/Api';
+import { Redirect } from 'react-router-dom';
+import { render } from 'react-dom';
 
 const Register: React.FC = () => {
+
+	const [created, setCreated] = useState("");
+    const [notCreated, setNotCreated] = useState("");
+	const [errorEmail, setErroremail] = useState("");
+	const [redirect, setRedirect] = useState(0);
+
+
+
+    useEffect(() => {
+
+    },[created])
+
+    useEffect(() => {
+
+    },[errorEmail]);
+
+
+
 	return (
+
 		<>
 			<Navbar />
 			<div className="flex-box1 container-box1">
-				<form action="" method="Post">
-					<div className="content-box1">
-						<h1 className="color">Criar Conta</h1>
-						<h4 className="color">Começar com conta existente</h4>
-						<button className="logue-fc">Logue com Facebook</button>
-						<br></br>
-						<button className="logue-gg">Logue com Twitter</button>
-						<br></br>
-						<b>
-							<p className="ou">OU</p>
-						</b>
+				<FormRegister
+				
+						initialValues={
+							{
+								name:"",
+								email:'',
+								tel:'',
+								password:'',
+								role:'',
+								interactian_code:'',
+								repeat_password:''
+							}
+						} 
+									
+						OnSubmit={
+							async (values:any)=>{
+								const response = await api.post('/interactians', {
+									headers:{
+										content_type: "application/json"
+									},
+									name: values.name,
+									email: values.email,
+									tel: values.tel,
+									password: values.password, 
+									interactian_code: values.interactian_code,
+									role: values.role
+								}).then((res) => {
+									console.log(res.status);
+									if(res.status === 201){
+										setErroremail("");
+										setCreated("Usuário criado com sucesso!");
+										setRedirect(1)
+									}else{
+										setNotCreated("")
+									}
+					
+								}).catch((error)=>{
+									console.log(`Esse é o erro -----> ${error.status}`)
+					
+									switch(error.message){
+										case "Request failed with status code 406":
+											setErroremail("*Email em uso!");
+												break;
+									}
+								})
+				
+							}
+						} 
+									
+						validations={	
+										
+							yup.object().shape({
+								name: yup.string().required("*Campo necessário").min(5),
+								email: yup.string().email("*Email inválido").min(3, "Email não é grande o suficiente").required("*Campo necessário"),
+								tel: yup.string().required("*Campo necessário").min(11, "Número inválido"),
+								password: yup.string().required("*Campo necessário").min(8, "*Senha deve ter no mínimo 8 caracteres"),
+								role: yup.string().required("*Campo necessário"),
+								interactian_code: yup.string().required("*Campo necessário"),
+								repeat_password: yup.string().required("*Campo necessário").oneOf([yup.ref('password'), null], 'Senhas não conferem')
+							})
+						}
 
-						<input
-							className="caixas"
-							type="text"
-							placeholder="Nome completo"
-						></input>
-						<input className="caixas" type="email" placeholder="Email"></input>
-						<input
-							className="caixas"
-							type="number"
-							placeholder="Número de celular"
-						></input>
-						<input
-							className="caixas"
-							type="password"
-							placeholder="Digite a senha"
-						></input>
-						<input
-							className="caixas-repeat-password"
-							type="password"
-							placeholder="Repita a senha"
-						></input>
-					</div>
-					<div className="content3">
-						<button type="submit" className="btnesse">
-							Cadastrar
-						</button>
-					</div>
-				</form>
+						errorEmail={errorEmail}
+						created={created}
+						notCreated={notCreated}
+
+						redirect={redirect}
+				
+				/>
+				
+				
+
 			</div>
 
 			<Footer />

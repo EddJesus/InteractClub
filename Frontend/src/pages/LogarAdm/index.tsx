@@ -14,30 +14,31 @@ const LogarAdm: React.FC = () => {
 					<div className="content-box">
 						<h2>Logue como administrador Interactiano</h2>
 
+						<input className="titulo" type="text" placeholder="Nome"></input>
 						<input className="titulo" type="email" placeholder="Email"></input>
-						<input
-							className="titulo"
-							type="password"
-							placeholder="Senha"
-						></input>
+						<input className="titulo" type="password" placeholder="Senha"></input>
+						
 						<select id="" className="titulo titulo2">
 							<option value="" disabled selected hidden>
 								Selecione seu Cargo
 							</option>
-							<option value="" className="a2">
+							<option value="president" className="a2">
 								Presidente
 							</option>
-							<option value="" className="a2">
+							<option value="intern_services_director" className="a2">
 								Diretor de serviços internos
 							</option>
-							<option value="" className="a2">
+							<option value="projects_director" className="a2">
 								Diretor de projetos
 							</option>
-							<option value="" className="a2">
+							<option value="public_image_director" className="a2">
 								Diretor de imagem publica
 							</option>
-							<option value="" className="a2">
+							<option value="site_administrator" className="a2">
 								Administrador do site
+							</option>
+							<option value="rotariano" className="a2">
+								Rotariano patrocinador
 							</option>
 						</select>
 					</div>

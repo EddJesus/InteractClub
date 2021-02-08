@@ -11,6 +11,7 @@ const ProductController = require("./controllers/ProductController");
 const ProjectController = require("./controllers/ProjectController");
 const SaleController = require("./controllers/SaleController");
 const SessionController = require("./controllers/SessionController");
+const AuthenticationMiddleware = require("./middleware/authentication");
 
 const MercadoPagoAPI = require("./APIs/MercadoPago/MercadoPagoAPI");
 
@@ -24,16 +25,18 @@ routes.get('/', (req, res) =>{
 routes.post('/interactians', InteractianController.create);
 routes.get('/interactians', InteractianController.index);
 routes.get('/interactians/:id', InteractianController.getInteractian);
+//routes.delete('/interactians/:id', InteractianController.delete);
+
 
 // ROTA sessions
 routes.post('/session', SessionController.login);
 
 // ROTA projects
-routes.post('/projects', upload.array('img'), ProjectController.create);
+routes.post('/projects', AuthenticationMiddleware, upload.array('img'), ProjectController.create);
 routes.get('/projects', ProjectController.index);
 routes.get('/projects/:id', ProjectController.getProject);
-routes.delete('/projects/:id', ProjectController.delete);
-routes.post('/projects/:id', ProjectController.update);
+routes.delete('/projects/:id', AuthenticationMiddleware, ProjectController.delete);
+routes.post('/projects/:id', AuthenticationMiddleware, ProjectController.update);
 
 // ROTA News
 routes.post('/news', upload.array('img'), NewController.create);

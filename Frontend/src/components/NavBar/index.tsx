@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
 import logo  from "../../assets/logo.png";
 
@@ -79,9 +78,11 @@ const Navbar:React.FC = (props) => {
                 <div className="access-navbar">
                     <p>É um interactiano? Acesse</p>
                     <div className="inputs-navbar">
-                        <input type="email" placeholder="E-mail"/>
-                        <input type="password" placeholder="Senha"/>
+                        <form action="">
+                            <input type="email" id="current-password" name="current-password" placeholder="E-mail"/>
+                            <input type="password" placeholder="Senha"/>
                         <button>OK</button>
+                        </form>
                     </div>
                     <p className="text-dont">Não possui cadastro?<a href="/register">Registre-se aqui</a></p>
                 </div>

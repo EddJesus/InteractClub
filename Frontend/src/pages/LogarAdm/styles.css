@@ -8,6 +8,10 @@
 .container-box {
 	padding: 50px;
 	height: 70%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .content-box {
@@ -15,8 +19,14 @@
 	border-radius: 5px;
 	background-color: rgb(241, 241, 241);
 	text-align: center;
-	width: 900px;
+	width: 100%;
+	min-width: 900px;
 	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 20px;
 }
 .titulo {
 	margin-top: 20px;
