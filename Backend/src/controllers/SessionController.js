@@ -43,6 +43,7 @@ module.exports = {
                         success: "Autenticado com sucesso!",
                         email: email,
                         name: verificação.name,
+                        role: verificação.role,
                         token: token
                     });
                 }else{

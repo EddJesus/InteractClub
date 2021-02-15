@@ -51,16 +51,20 @@
     -webkit-background-composite: border;
 }
 
+.links-navbar a{
+   transition: filter 300ms;
+}
+
 .links-navbar a:hover{
     border-radius: 10px;
-    background: #6eabf0;
-    transition-delay: 10ms;
+    background: #5591d6;
+    filter: brightness(1.2);
     cursor: pointer;
 }
 
 
 .access-navbar{
-    width: 30%;
+    width: 25%;
     max-width: 400px;
     font-size: 15px;
     margin-right: 20px;
@@ -76,11 +80,13 @@
 .access-navbar a{
     color: rgb(207, 204, 204);
     margin-left: 10px;
-    padding: 0px;
+    
+    transition: filter 300ms;
 }
 
 .access-navbar a:hover{
-    color: rgb(192, 187, 187);
+    /* color: rgb(192, 187, 187); */
+    filter: brightness(1.2);
     margin-left: 10px;
 }
 
@@ -132,5 +138,62 @@
     background-color: #6eabf0;
 }
 
+.profile-container{
+    display: flex;
+    flex-direction: row;
+    
+    float: left;
 
+    align-items: center;
+    justify-content: center;
 
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
+
+}
+
+.profile-container img{
+    max-height: 100%;
+    max-width: 20%;
+    border-radius: 50%;
+}
+
+.profile-container div{
+    margin-left: 5px;
+}
+
+.profile-container h3{
+    margin: 0;
+    width: 100%;
+}
+
+.profile-container p{
+    margin: 0;
+    width: 100%;
+}
+
+.profile-settings{
+    width: 50%;
+    background-color: transparent;
+
+    display: flex;
+    align-items: flex-start;
+}
+
+.profile-settings:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.profile-settings img{
+    width: 100%;
+    height: 100%;
+
+    transition: opacity 200ms;
+}
+
+.profile-settings img:hover{
+    opacity: 80%;
+}

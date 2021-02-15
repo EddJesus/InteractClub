@@ -1,73 +1,37 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
 
 import { Formik, Form, Field } from "formik";
 
+import userimage from "../../assets/default-user-image.png";
 import logo from "../../assets/logo.png";
+import settingsicon from "../../assets/settings-branco.svg";
 
 import "./styles.css";
 
+interface user {
+  name?: string | null;
+  role?: string | null;
+}
+
 const Navbar: React.FC = (props) => {
-  const { signed, signIn, user } = useContext(AuthContext);
+  const { signIn, signed, signOut } = useContext(AuthContext);
 
-  console.log(signed)
-
-  const [pageHome, setPageHome] = useState({});
-  const [pageProjects, setPageProjects] = useState({});
-  const [pageMarket, setPageMarket] = useState({});
-  const [pageDonations, setPageDonations] = useState({});
-  const [pageAboutUs, setPageAboutUs] = useState({});
+  const [open, setOpen] = useState(false);
+  const [user, setUser] = useState<user | null>({} as user);
 
   function handleSignIn(e: any) {
     signIn(e.email, e.password);
   }
 
-  function activatePage(n: number) {
-    switch (n) {
-      case 1:
-        setPageHome({
-          fontWeight: 700,
-          borderRadius: 10,
-          background: "#6eabf0",
-          transitionDelay: "10ms",
-        });
-        break;
-      case 2:
-        setPageProjects({
-          fontWeight: 700,
-          borderRadius: 10,
-          background: "#6eabf0",
-          transitionDelay: "10ms",
-        });
-        break;
-      case 3:
-        setPageMarket({
-          fontWeight: 700,
-          borderRadius: 10,
-          background: "#6eabf0",
-          transitionDelay: "10ms",
-        });
-        break;
-      case 4:
-        setPageDonations({
-          fontWeight: 700,
-          borderRadius: 10,
-          background: "#6eabf0",
-          transitionDelay: "10ms",
-        });
-        break;
-      case 5:
-        setPageAboutUs({
-          fontWeight: 700,
-          borderRadius: 10,
-          background: "#6eabf0",
-          transitionDelay: "10ms",
-        });
-        break;
-      default:
-    }
-  }
+  useEffect(() => {
+    setUser({
+      name: localStorage.getItem("name"),
+      role: localStorage.getItem("role"),
+    });
+  }, [signed]);
+
   return (
     <div className="container-navbar">
       <img className="img" src={logo} alt="/" />
@@ -75,52 +39,26 @@ const Navbar: React.FC = (props) => {
       <div className="links-navbar">
         <ul>
           <li>
-            <Link onClick={() => activatePage(1)} style={pageHome} to="/">
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link
-              onClick={() => activatePage(2)}
-              style={pageProjects}
-              to="/projects"
-            >
-              Projetos
-            </Link>
+            <Link to="/projects">Projetos</Link>
           </li>
           <li>
-            <Link
-              onClick={() => activatePage(3)}
-              style={pageMarket}
-              to="/market"
-            >
-              Loja
-            </Link>
+            <Link to="/market">Loja</Link>
           </li>
           <li>
-            <Link
-              onClick={() => activatePage(4)}
-              style={pageDonations}
-              to="/donations"
-            >
-              Doações
-            </Link>
+            <Link to="/donations">Doações</Link>
           </li>
           <li>
-            <Link
-              onClick={() => activatePage(5)}
-              style={pageAboutUs}
-              to="/about-us"
-            >
-              Sobre nós
-            </Link>
+            <Link to="/about-us">Sobre nós</Link>
           </li>
         </ul>
       </div>
 
       <div className="access-navbar">
         {signed === false ? (
-            <>
+          <>
             <p>É um interactiano? Acesse</p>
             <div className="inputs-navbar">
               <Formik
@@ -143,7 +81,28 @@ const Navbar: React.FC = (props) => {
             </p>
           </>
         ) : (
-          <h1>Olá {user?.name}</h1>
+          <>
+            <div className="profile-container">
+              <img src={userimage} alt="" />
+              <div>
+                <h3>{user?.name}</h3>
+                <p>Administrador do site</p>
+              </div>
+              <button
+                onClick={() => setOpen(!open)}
+                className="profile-settings"
+              >
+                <img src={settingsicon} alt="" />
+              </button>
+            </div>
+            <button
+              onClick={() => {
+                signOut();
+              }}
+            >
+              logout
+            </button>
+          </>
         )}
       </div>
     </div>
