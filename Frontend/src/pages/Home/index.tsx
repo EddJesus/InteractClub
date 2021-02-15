@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react'
 import api from "../../services/Api";
 import ProjectInterface from "../../interfaces/projectsInterface";
 
-
-
 import Navbar from '../../components/NavBar'
 import Footer from '../../components/Footer'
 import QRCode from 'qrcode.react'

@@ -1,114 +1,114 @@
 .flex-box1 {
-	position: relative;
-	align-items: center;
-	justify-content: center;
-	display: flex;
-	height: 80%!important;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 80% !important;
 }
 
 .container-box1 {
-	padding: 50px;
-	height: 100%;
+  padding: 50px;
+  height: 100%;
 }
 
 .content-box1 {
-	padding-top: 1px;
-	border-radius: 5px;
-	background-color: rgb(241, 241, 241);
-	text-align: center;
-	width: 400px;
+  padding-top: 1px;
+  border-radius: 5px;
+  background-color: rgb(241, 241, 241);
+  text-align: center;
+  width: 400px;
 }
 .logue-fc {
-	background-color: #0d3b70;
-	color: white;
-	border-radius: 100px;
-	width: 200px;
-	height: 35px;
+  background-color: #0d3b70;
+  color: white;
+  border-radius: 100px;
+  width: 200px;
+  height: 35px;
 }
 .logue-gg {
-	margin-top: 10px;
-	background-color: #3d86da;
-	color: white;
-	border-radius: 100px;
-	width: 200px;
-	height: 35px;
+  margin-top: 10px;
+  background-color: #3d86da;
+  color: white;
+  border-radius: 100px;
+  width: 200px;
+  height: 35px;
 }
 .color {
-	color: #2580eb;
+  color: #2580eb;
 }
 .ou {
-	color: #2580eb;
-	font-size: x-large;
+  color: #2580eb;
+  font-size: x-large;
 }
 .caixas {
-	text-align: center;
-	margin-top: 10px;
-	border-radius: 100px;
-	width: 70%;
-	margin-left: 15%;
-	margin-right: 15%;
-	height: 35px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 100px;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  height: 35px;
 }
 
-span{
-	margin-top: 0;
-	margin-bottom: 5px;
-	font-size: 0.8rem;
-	color: red;
+span {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+  color: red;
 }
 
-.caixas{
-	box-shadow: 0 0 0 0;
-	border: 0 none;
-	outline: 0;
+.caixas {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
 }
 
-.caixas-error{
-	color: red;
+.caixas-error {
+  color: red;
 }
 
 .btnesse {
-	background-color: #2580eb;
-	color: white;
-	border-radius: 100px;
-	width: 50%;
-	margin-left: 25%;
-	margin-right: 25%;
-	height: 35px;
-	margin-top: 10px;
-	margin-bottom: 30px;
+  background-color: #2580eb;
+  color: white;
+  border-radius: 100px;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  height: 35px;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
-.btnesse:hover{
-	cursor: pointer;
-    transition: 0.2ms;
-    background-color: #6eabf0;
+.btnesse:hover {
+  cursor: pointer;
+  transition: 0.2ms;
+  background-color: #6eabf0;
 }
 
 .content3 {
-	padding-top: 40px;
+  padding-top: 40px;
 
-	text-align: center;
+  text-align: center;
 }
 
-.caixas-repeat-password{
-	text-align: center;
-	margin-bottom: 30px;
-	border-radius: 100px;
-	width: 300px;
-	height: 35px;
+.caixas-repeat-password {
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 100px;
+  width: 300px;
+  height: 35px;
 }
 
-.caixas-repeat-password{
-	box-shadow: 0 0 0 0;
-	border: 0 none;
-	outline: 0;
+.caixas-repeat-password {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
 }
 
-.not-created-message{
-	color: red;
+.not-created-message {
+  color: red;
 }
 
-.created-message{
-	color: green;
+.created-message {
+  color: green;
 }

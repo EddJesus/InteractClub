@@ -1,16 +1,14 @@
 // Update with your config settings.
-const env = require("./src/config/env");
-
 module.exports = {
 
   development: {
     
-      client: env.DB_CLIENT,
+      client: process.env.DB_CLIENT,
       connection: {
-        host : env.DB_HOST,
-        user : env.DB_USER,
-        password : env.DB_PASSWORD,
-        database : env.DB_NAME
+        host : process.env.DB_HOST,
+        user : process.env.DB_USER,
+        password : process.env.DB_PASSWORD,
+        database : process.env.DB_NAME
       },
     migrations:{
       directory: './src/database/migrations'

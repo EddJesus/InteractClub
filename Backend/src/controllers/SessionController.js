@@ -37,8 +37,14 @@ module.exports = {
                         );
                     
                     res.header({Authorization: token});
+                    console.log(token);
 
-                    return  res.status(200).json({success: "Autenticado com sucesso!"});
+                    return  res.status(200).json({
+                        success: "Autenticado com sucesso!",
+                        email: email,
+                        name: verificação.name,
+                        token: token
+                    });
                 }else{
                     return res.status(401).json({error: "Usuário ou senha incorretos!"});
                 }
