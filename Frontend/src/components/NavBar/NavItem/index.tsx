@@ -3,7 +3,11 @@ import React from 'react';
 // import { Container } from './styles';
 
 const NavItem: React.FC = () => {
-  return <div />;
+  return(
+    <ul>
+
+    </ul>
+  )
 }
 
 export default NavItem;
