@@ -11,7 +11,9 @@ const ProductController = require("./controllers/ProductController");
 const ProjectController = require("./controllers/ProjectController");
 const SaleController = require("./controllers/SaleController");
 const SessionController = require("./controllers/SessionController");
+const CheckController = require("./controllers/CheckController");
 const AuthenticationMiddleware = require("./middleware/authentication");
+
 
 const MercadoPagoAPI = require("./APIs/MercadoPago/MercadoPagoAPI");
 
@@ -30,6 +32,9 @@ routes.get('/interactians/:id', InteractianController.getInteractian);
 
 // ROTA sessions
 routes.post('/session', SessionController.login);
+
+// ROTA checkToken
+routes.post('/check-token', CheckController.checkAuth);
 
 // ROTA projects
 routes.post('/projects', AuthenticationMiddleware, upload.array('img'), ProjectController.create);

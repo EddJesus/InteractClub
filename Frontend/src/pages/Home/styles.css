@@ -82,16 +82,22 @@ body{
 
     padding:7%;
 
-    font-size: 80%;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 
     background-color: #2481e9;
     color: #ffff;
 
     border-radius: 50px;
+}
+
+.text-became-interactian h2{
+    display: flex;
+    padding: 0;
+    text-align: center!important;
+    font-size: clamp(0.4em + 0.4vw, 0.4em + 0.5vw, 0.4em + 0.7vw);
 }
 
 
@@ -103,16 +109,16 @@ body{
     align-items: center;
     justify-content: center;   
 
-    padding-bottom: 70px;
+    padding-bottom: 40px;
 
-    margin-top: 20px;
+    margin-top: 15px;
 
     border-radius: 50px;
     
 }
 
 .form-became-interactian button{
-    margin-top: 30px;
+    margin-top: 20px;
 
     padding: 3%;
 
@@ -143,9 +149,9 @@ body{
     width: 70%; 
 
     padding: 4%;
-    margin-top: 10%;
+    margin-top: 15px;
     
-    font-size: 100%;
+    font-size: clamp(0.5em + 0.5vw, 0.6em + 0.6vw, 0.7em + 0.7vw);
 
     border-radius: 10px;
 

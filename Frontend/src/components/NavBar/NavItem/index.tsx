@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
-// import { Container } from './styles';
-
-const NavItem: React.FC = () => {
-  return(
-    <ul>
-
-    </ul>
-  )
-}
+const NavItem = (props: any) => {
+  return (
+    <li>
+      <Link to={props.link}>
+        {props.title}
+      </Link>
+    </li>
+  );
+};
 
 export default NavItem;

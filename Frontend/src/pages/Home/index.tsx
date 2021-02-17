@@ -24,10 +24,9 @@ const Home: React.FC = () => {
 	}, []);
 
 	projects.map(project => {
-		project.img.replace(/".jpeg+"/, "");
+		return project.img.replace(/".jpeg+"/, "");
 	})
 	
-
 	return (
 		<>
 			<Navbar />
@@ -67,9 +66,7 @@ const Home: React.FC = () => {
 					<div className="grid-projects">
 						{projects.map(project => (
 								<div>
-									<p>{project?.title}</p>
-									<img src={project?.img} alt="" />
-									<p>{project?.img}</p>
+									<img src={project?.url} alt="" />
 								</div>
 							))
 						}

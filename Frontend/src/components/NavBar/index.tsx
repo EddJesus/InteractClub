@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
+import NavItem from "./NavItem/index";
 
 import { Formik, Form, Field } from "formik";
 
@@ -16,7 +16,7 @@ interface user {
 }
 
 const Navbar: React.FC = (props) => {
-  const { signIn, signed, signOut } = useContext(AuthContext);
+  const { signIn, signed, signOut, loading } = useContext(AuthContext);
 
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState<user | null>({} as user);
@@ -38,47 +38,53 @@ const Navbar: React.FC = (props) => {
 
       <div className="links-navbar">
         <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/projects">Projetos</Link>
-          </li>
-          <li>
-            <Link to="/market">Loja</Link>
-          </li>
-          <li>
-            <Link to="/donations">Doações</Link>
-          </li>
-          <li>
-            <Link to="/about-us">Sobre nós</Link>
-          </li>
+          {signed === false ? (
+            <>
+              <NavItem title="Home" link="/" />
+              <NavItem title="Projetos" link="/projects" />
+              <NavItem title="Loja" link="/market" />
+              <NavItem title="Doações" link="/donations" />
+              <NavItem title="Sobre nós" link="/about-us" />
+            </>
+          ) : (
+            <>
+              <NavItem title="Home" link="/" />
+              <NavItem title="Projetos" link="/projects" />
+              <NavItem title="Loja" link="/market" />
+              <NavItem title="Doações" link="/donations" />
+              <NavItem title="Sobre nós" link="/about-us" />
+            </>
+          )}
         </ul>
       </div>
 
       <div className="access-navbar">
-        {signed === false ? (
+        {loading === true ?
           <>
-            <p>É um interactiano? Acesse</p>
+          </>
+          :
+        signed === false ? (
+          <>
             <div className="inputs-navbar">
               <Formik
                 initialValues={{ email: "", password: "" }}
                 onSubmit={handleSignIn}
-              >
+                >
                 <Form>
+                  <p>É um interactiano? Acesse</p>
                   <Field type="email" name="email" placeholder="E-mail"></Field>
                   <Field
                     type="password"
                     name="password"
                     placeholder="Senha"
                   ></Field>
-                  <button type="submit">OK</button>
+                  <button type="submit">Entrar</button>
                 </Form>
               </Formik>
             </div>
-            <p className="text-dont">
+            <div className="text-dont">
               Não possui cadastro?<a href="/register">Registre-se aqui</a>
-            </p>
+            </div>
           </>
         ) : (
           <>
