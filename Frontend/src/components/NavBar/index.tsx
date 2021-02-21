@@ -16,7 +16,7 @@ interface user {
 }
 
 const Navbar: React.FC = (props) => {
-  const { signIn, signed, signOut, loading } = useContext(AuthContext);
+  const { signIn, signed, signOut, loading, token } = useContext(AuthContext);
 
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState<user | null>({} as user);
@@ -40,19 +40,19 @@ const Navbar: React.FC = (props) => {
         <ul>
           {signed === false ? (
             <>
-              <NavItem title="Home" link="/" />
-              <NavItem title="Projetos" link="/projects" />
-              <NavItem title="Loja" link="/market" />
-              <NavItem title="Doações" link="/donations" />
-              <NavItem title="Sobre nós" link="/about-us" />
+              <NavItem key="1" title="Home" link="/" />
+              <NavItem key="2" title="Projetos" link="/projects" />
+              <NavItem key="3" title="Loja" link="/market" />
+              <NavItem key="4" title="Doações" link="/donations" />
+              <NavItem key="5" title="Sobre nós" link="/about-us" />
             </>
           ) : (
             <>
-              <NavItem title="Home" link="/" />
-              <NavItem title="Projetos" link="/projects" />
-              <NavItem title="Loja" link="/market" />
-              <NavItem title="Doações" link="/donations" />
-              <NavItem title="Sobre nós" link="/about-us" />
+              <NavItem key="1" title="Home" link="/" />
+              <NavItem key="2" title="Projetos" link="/projects" />
+              <NavItem key="3" title="Loja" link="/market" />
+              <NavItem key="4" title="Doações" link="/donations" />
+              <NavItem key="5" title="Sobre nós" link="/about-us" />
             </>
           )}
         </ul>
@@ -60,55 +60,56 @@ const Navbar: React.FC = (props) => {
 
       <div className="access-navbar">
         {loading === true ?
-          <>
-          </>
+            <>
+            </>
           :
-        signed === false ? (
+        signed === true && token !== '' ? (
           <>
-            <div className="inputs-navbar">
-              <Formik
-                initialValues={{ email: "", password: "" }}
-                onSubmit={handleSignIn}
-                >
-                <Form>
-                  <p>É um interactiano? Acesse</p>
-                  <Field type="email" name="email" placeholder="E-mail"></Field>
-                  <Field
-                    type="password"
-                    name="password"
-                    placeholder="Senha"
-                  ></Field>
-                  <button type="submit">Entrar</button>
-                </Form>
-              </Formik>
-            </div>
-            <div className="text-dont">
-              Não possui cadastro?<a href="/register">Registre-se aqui</a>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="profile-container">
-              <img src={userimage} alt="" />
-              <div>
-                <h3>{user?.name}</h3>
-                <p>Administrador do site</p>
-              </div>
-              <button
-                onClick={() => setOpen(!open)}
-                className="profile-settings"
-              >
-                <img src={settingsicon} alt="" />
-              </button>
+          <div className="profile-container">
+            <img src={userimage} alt="" />
+            <div>
+              <h3>{user?.name}</h3>
+              <p>Administrador do site</p>
             </div>
             <button
-              onClick={() => {
-                signOut();
-              }}
+              onClick={() => setOpen(!open)}
+              className="profile-settings"
             >
-              logout
+              <img src={settingsicon} alt="" />
             </button>
-          </>
+          </div>
+          <button
+            onClick={() => {
+              signOut();
+            }}
+          >
+            logout
+          </button>
+        </>
+        ) : (
+          <>
+          <div className="inputs-navbar">
+            <Formik
+              initialValues={{ email: "", password: "" }}
+              onSubmit={handleSignIn}
+              >
+              <Form>
+                <p>É um interactiano? Acesse</p>
+                <Field type="email" name="email" placeholder="E-mail"></Field>
+                <Field
+                  type="password"
+                  name="password"
+                  placeholder="Senha"
+                ></Field>
+                <button type="submit">Entrar</button>
+              </Form>
+            </Formik>
+          </div>
+          <div className="text-dont">
+            Não possui cadastro?<a href="/register">Registre-se aqui</a>
+          </div>
+        </>
+
         )}
       </div>
     </div>

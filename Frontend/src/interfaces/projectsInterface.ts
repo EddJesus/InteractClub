@@ -1,4 +1,5 @@
-export default interface Project { 
+export default interface Project {
+	id: number, 
 	title: string,
 	body: string,
 	img: string,

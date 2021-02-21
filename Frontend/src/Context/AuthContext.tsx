@@ -7,6 +7,7 @@ interface AuthContextData {
   signIn(email: string, password: string): Promise<void>;
   signOut: Function;
   loading: boolean;
+  token?: object | string;
 }
 
 interface user {
@@ -20,46 +21,35 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 export const AuthProvider: React.FC = (props: any) => {
   const [signed, setSigned] = useState(false);
   const [user, setUser] = useState<user | null>(null);
-  const [token, setToken] = useState({});
+  const [token, setToken] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const gettingToken = localStorage.getItem("token");
 
-    async function gettingToken(){
-      const getToken = await localStorage.getItem("token");
-
-      if(getToken){
-      setToken(JSON.parse(getToken))
-      }
+    if (gettingToken) {
+      setToken(JSON.parse(gettingToken));
     }
 
-    gettingToken()
-
-    if (token) {
-      api
+    async function getToken() {
+      await api
         .post("/check-token", {
+          headers: {
+            content_type: "application/json",
+          },
           token: token,
         })
         .then((res) => {
-          if (res.status === 401) {
-            localStorage.clear();
-            setSigned(false);
-            setLoading(false);
-          } else {
-            setSigned(true);
-            setLoading(false);
-          }
+          setSigned(true);
         })
         .catch((error) => {
+          console.log(error);
         });
     }
 
-    if (signed === true) {
-      if (token) {
-        api.defaults.headers.Authorization = `Bearer ${token}`;
-      }
-    }
-  }, [signed, token]);
+    getToken();
+    setLoading(false);
+  }, [token]);
 
   async function signIn(email: string, password: string) {
     await api
@@ -80,16 +70,18 @@ export const AuthProvider: React.FC = (props: any) => {
             role: data.role,
           });
 
-          setSigned(true);
-
           localStorage.setItem("name", data.name);
           localStorage.setItem("role", data.role);
           localStorage.setItem("token", JSON.stringify(data.token));
           api.defaults.headers.Authorization = `Bearer ${data.token}`;
+
+          setSigned(true);
+          window.location.reload();
         }
       })
       .catch((error) => {
-        console.log("erro --->" + error);
+        window.location.reload();
+        console.error("erro --->" + error);
       });
   }
 
@@ -102,7 +94,7 @@ export const AuthProvider: React.FC = (props: any) => {
 
   return (
     <AuthContext.Provider
-      value={{ signed: signed, user: user, signIn, signOut, loading }}
+      value={{ signed: signed, user: user, signIn, signOut, loading, token }}
     >
       {props.children}
     </AuthContext.Provider>

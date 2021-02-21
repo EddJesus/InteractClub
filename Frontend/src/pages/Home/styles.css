@@ -10,7 +10,7 @@ body{
 
 .container{
     background-color: white;
-    height: 80%;
+    height: auto;
     width: 100%;
 
     justify-content: space-between;
@@ -23,7 +23,7 @@ body{
 }
 
 .container-left{
-    height: 100%;
+    height: auto;
     width: 25%;
 
     float: left;
@@ -39,7 +39,7 @@ body{
 }
 
 .container-right{
-    height: 70%;
+    height: auto;
     width: 65%;
 
     float: right;
@@ -49,8 +49,6 @@ body{
 
     margin-left: 20px;
     margin-right: 20px;
-
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -250,6 +248,7 @@ body{
     grid-column-gap: 20px;
 
     margin-top: 20px;
+    margin-bottom: 20px;
 
     max-width: 980px;
 }
@@ -259,9 +258,33 @@ body{
     height: 200px;
     width: 100%;
     margin-top: 20px;
+
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 
 .grid-projects img{
     width: 100%;
     height: 100%;
+    filter: brightness(70%);
+    transition: filter 200ms;
+
+}
+.grid-projects img:hover{
+    filter: brightness(50%)
+}
+
+.project-title{
+    position: absolute;
+    top: 5;
+    text-align: center;
+    font-size: clamp(1em + 1vw, 1.1em + 1.1vw, 1.2em + 1.2vw);
+    font-weight: bold;
+    max-width: 100%;
+    max-height: 100%;
+    color: white;
 }
