@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const NavItem = (props: any) => {
+const NavLink = (props: any) => {
   return (
     <li key={props.key}>
       <Link to={props.link}>
@@ -11,4 +11,4 @@ const NavItem = (props: any) => {
   );
 };
 
-export default NavItem;
+export default NavLink;

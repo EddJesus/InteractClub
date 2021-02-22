@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../../Context/AuthContext";
-import NavItem from "./NavItem/index";
+import NavLink from "./NavLink/index";
 
 import { Formik, Form, Field } from "formik";
 
@@ -19,7 +19,7 @@ const Navbar: React.FC = (props) => {
   const { signIn, signed, signOut, loading, token } = useContext(AuthContext);
 
   const [open, setOpen] = useState(false);
-  const [user, setUser] = useState<user | null>({} as user);
+  const [user, setUser] = useState<user>({} as user);
 
   function handleSignIn(e: any) {
     signIn(e.email, e.password);
@@ -40,19 +40,19 @@ const Navbar: React.FC = (props) => {
         <ul>
           {signed === false ? (
             <>
-              <NavItem key="1" title="Home" link="/" />
-              <NavItem key="2" title="Projetos" link="/projects" />
-              <NavItem key="3" title="Loja" link="/market" />
-              <NavItem key="4" title="Doações" link="/donations" />
-              <NavItem key="5" title="Sobre nós" link="/about-us" />
+              <NavLink key="1" title="Home" link="/" />
+              <NavLink key="2" title="Projetos" link="/projects" />
+              <NavLink key="3" title="Loja" link="/market" />
+              <NavLink key="4" title="Doações" link="/donations" />
+              <NavLink key="5" title="Sobre nós" link="/about-us" />
             </>
           ) : (
             <>
-              <NavItem key="1" title="Home" link="/" />
-              <NavItem key="2" title="Projetos" link="/projects" />
-              <NavItem key="3" title="Loja" link="/market" />
-              <NavItem key="4" title="Doações" link="/donations" />
-              <NavItem key="5" title="Sobre nós" link="/about-us" />
+              <NavLink key="1" title="Home" link="/" />
+              <NavLink key="2" title="Projetos" link="/projects" />
+              <NavLink key="3" title="Loja" link="/market" />
+              <NavLink key="4" title="Doações" link="/donations" />
+              <NavLink key="5" title="Sobre nós" link="/about-us" />
             </>
           )}
         </ul>
@@ -68,7 +68,7 @@ const Navbar: React.FC = (props) => {
           <div className="profile-container">
             <img src={userimage} alt="" />
             <div>
-              <h3>{user?.name}</h3>
+            <h3>{user.name}</h3>
               <p>Administrador do site</p>
             </div>
             <button

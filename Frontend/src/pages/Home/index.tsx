@@ -62,9 +62,9 @@ const Home: React.FC = () => {
 
           <div className="grid-projects">
             {projects.map((project) => (
-              <div key={project?.id}>
-                <img src={project?.url} alt="" />
-								<p className="project-title">{project.title}</p>
+              <div key={project.id}>
+                <img src={project.url} alt="" />
+                <p className="project-title">{project.title}</p>
               </div>
             ))}
           </div>

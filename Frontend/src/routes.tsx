@@ -11,6 +11,7 @@ import AddNews from "./pages/AddNews/index";
 import LogarAdm from "./pages/LogarAdm/index";
 import Register from "./pages/Register/index";
 import history from "./history";
+import CreateProject from './components/CreateProject/index'
 
 const Routes: React.FC = () => {
   return (
@@ -25,6 +26,7 @@ const Routes: React.FC = () => {
           <Route component={AddNews} path="/addnews" exact />
           <Route component={LogarAdm} path="/logaradm" exact />
           <Route component={Register} path="/register" exact />
+          <Route component={CreateProject} path="/create-project" exact />
         </Router>
       </Switch>
     </BrowserRouter>

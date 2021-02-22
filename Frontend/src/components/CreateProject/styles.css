@@ -1,0 +1,106 @@
+input:focus{
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+button:focus{
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+.container-createproject p{
+  color: white;
+  margin: 0 0 0 0;
+}
+
+.skip-back-create{
+  color: white;
+  font-size: clamp(0.8em + 0.8vw, 0.8em + 0.8vw, 1em + 1vw);
+  margin-left: 20px;
+  text-decoration-style: none;
+  text-decoration: none;
+  transition: filter 200ms;
+}
+
+.skip-back-create:hover{
+  filter: brightness(80%);
+}
+
+.container-createproject{
+  background-color: #2481e9;
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+}
+
+.container-createproject h1{
+  font-size: clamp(1.3em + 1.3vw, 1.5em + 1.5vw, 1.7em + 1.7vw);
+
+  color: white;
+}
+
+.container-createproject form{
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-createproject form textarea{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.container-createproject form input{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  
+}
+
+.title-field{
+  max-width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-addfield button:hover{
+  filter: brightness(80%);
+}
+
+.btn-addfield{
+  display: flex;
+  flex-direction: row;
+  width: 10%;
+  justify-content: space-between;
+  transition: filter 200ms;
+}
+
+.btn-addfield button{
+  border-style: dotted;
+  border-width: 1px;
+  border-color: white;
+  background-color: transparent;
+  margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: row;
+}
