@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import Dropzone from "react-dropzone";
-
 import "./styles.css";
+
+import {Upload} from './UploadFile'
 
 import { ErrorMessage, Formik, Form, Field } from "formik";
 
@@ -13,7 +13,6 @@ import skipBack from "../../assets/skip-back.svg";
 import textArray from "../../interfaces/textArrayInterface";
 
 import { Link } from "react-router-dom";
-import { DropContainer } from "./DropContainer/index";
 
 const CreateProject: React.FC = () => {
   const [texts, setTexts] = useState<textArray[]>([{}]);
@@ -70,19 +69,7 @@ const CreateProject: React.FC = () => {
                 case 1:
                   return (
                     <>
-                      <Dropzone accept="image/*" onDropAccepted={() => {}}>
-                        {({ getRootProps, getInputProps, isDragActive, isDragReject}) => (
-                          <DropContainer
-                            {...getRootProps()}
-                          >
-                            {isDragActive ? (
-                              <input {...getInputProps()} type="file" />
-                            ) : (
-                              <p>Adicione uma imagem...</p>
-                            )}
-                          </DropContainer>
-                        )}
-                      </Dropzone>
+                      <Upload></Upload>
                     </>
                   );
               }

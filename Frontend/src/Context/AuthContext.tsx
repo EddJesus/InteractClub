@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import api from "../services/Api";
-
+ 
 interface AuthContextData {
   signed: boolean;
   user: user | null;

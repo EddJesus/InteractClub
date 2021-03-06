@@ -3,8 +3,8 @@ exports.up = function(knex) {
         table.increments('id_project');
         table.string('title', 50).notNullable();
         table.text('body').notNullable();
-        table.string('img', 255).notNullable();
-        table.string('url', 255).notNullable().defaultTo('');
+        table.specificType('img', 'text ARRAY').notNullable();
+        table.specificType('url', 'text ARRAY').notNullable();
 
         table.integer('id_interactian').unsigned().notNullable();
 

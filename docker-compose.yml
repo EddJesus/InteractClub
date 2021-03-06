@@ -31,7 +31,7 @@ services:
       - "interact"
     volumes:
       - ./Frontend/:/usr/app/
-      - '/usr/app/node_modules'
+      - /usr/app/node_modules/
     depends_on: 
       - backend
     environment: 
@@ -53,6 +53,22 @@ services:
     container_name: mysql
     ports:
       - "3306:3306"
+
+  postgres:
+    image: postgres
+    user: postgres
+    networks:
+      - "interact"
+    environment: 
+      - POSTGRES_ROOT_PASSWORD=eduardo123
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=eduardo123
+      - POSTGRES_DB=interactclub
+    container_name: postgres
+    volumes:
+      - .:/var/lib/postgres/data
+    ports:
+      - "5432:5432"
 
 networks:
   interact:

@@ -9,14 +9,14 @@ module.exports = {
 
         const imgs = req.files;
 
-        var pathimgs = '';
+        const arr_keys = [];
+        const arr_urls = [];
         var url = '';
         var key = '';
 
         imgs.forEach(img =>{
-            pathimgs += img.path;
-            url += img.location
-            key += img.key
+            arr_keys.push(img.key)
+            arr_urls.push(img.location)
         })
 
         const validation = await connection('interactians').select('permission').where('id_interactians', '=', data.id_interactian);
@@ -30,8 +30,8 @@ module.exports = {
             await connection('projects').insert({
                 title: data.title,
                 body: data.body,
-                img: key,
-                url: url,
+                img: arr_keys,
+                url: arr_urls,
                 id_interactian: data.id_interactian,
             })
 
